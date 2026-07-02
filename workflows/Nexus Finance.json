@@ -1,0 +1,589 @@
+{
+  "name": "Nexus Finance",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e9b6e504-b663-41b5-a8ac-3b3f8a6a452e",
+      "name": "Telegram Trigger",
+      "webhookId": "9e50e5b2-686b-4393-bdde-3f880b55a47a",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.photo }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "exists",
+                      "singleValue": true
+                    },
+                    "id": "9fa3a009-5b92-4a64-bfc6-28d6aaf1b544"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Foto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "4fde0671-f4cb-432b-81d1-61b218c86348",
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Teks"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        272,
+        -16
+      ],
+      "id": "43ed01c9-1a4b-4f2e-8d4d-d53cd865c8b2",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA",
+          "mode": "list",
+          "cachedResultName": "Budgeting with Nexus Finance",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1276418944,
+          "mode": "list",
+          "cachedResultName": "Setup",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA/edit#gid=1276418944"
+        },
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {
+              "rangeDefinition": "specifyRangeA1",
+              "range": "A1:J22"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        592,
+        0
+      ],
+      "id": "614a0e70-aaf9-4de0-a8c4-305217d0f4de",
+      "name": "Get Setup Row",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows = $input.all().map(item => item.json).filter(row => row.row_number >= 4);\n\nconst struktur = {\n  TRANSACTION_TYPE_CATEGORIES: { Income: [], Expense: [], Saving: [], Transfer: [] },\n  SOURCE: { Bank: [], Wallet: [], RDN: [] }\n};\n\nfor (const row of rows) {\n  if (row.col_2) struktur.TRANSACTION_TYPE_CATEGORIES.Income.push(row.col_2);\n  if (row.col_3) struktur.TRANSACTION_TYPE_CATEGORIES.Expense.push(row.col_3);\n  if (row.col_4) struktur.TRANSACTION_TYPE_CATEGORIES.Saving.push(row.col_4);\n  if (row.col_5) struktur.TRANSACTION_TYPE_CATEGORIES.Transfer.push(row.col_5);\n  if (row.col_7) struktur.SOURCE.Bank.push(row.col_7);\n  if (row.col_8) struktur.SOURCE.Wallet.push(row.col_8);\n  if (row.col_9) struktur.SOURCE.RDN.push(row.col_9);\n}\n\nconst contextText = `\nTRANSACTION_TYPE_CATEGORIES:\n- Income: ${struktur.TRANSACTION_TYPE_CATEGORIES.Income.join(', ')}\n- Expense: ${struktur.TRANSACTION_TYPE_CATEGORIES.Expense.join(', ')}\n- Saving: ${struktur.TRANSACTION_TYPE_CATEGORIES.Saving.join(', ')}\n- Transfer: ${struktur.TRANSACTION_TYPE_CATEGORIES.Transfer.join(', ')}\n\nSOURCE:\n- Bank: ${struktur.SOURCE.Bank.join(', ')}\n- Wallet: ${struktur.SOURCE.Wallet.join(', ')}\n- RDN: ${struktur.SOURCE.RDN.join(', ')}\n`.trim();\n\nreturn {\n  json: {\n    context_kategori: contextText,\n    context_struktur: struktur,\n    original_text: $('Switch').item.json.message.text,\n    chat_id: $('Switch').item.json.message.chat.id\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        0
+      ],
+      "id": "ee359d55-8ea9-4f05-8449-1f5f45cb4320",
+      "name": "Susun Konteks Kategori"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=Kamu adalah asisten pencatatan keuangan yang mengekstrak data transaksi dari pesan bahasa natural (Bahasa Indonesia).\n\nBerikut daftar kategori dan sumber dana yang VALID di sistem ini — kamu WAJIB hanya memilih dari daftar ini, jangan pernah membuat kategori/sumber baru:\n\n{{ $json.context_kategori }}\n\nTugasmu: baca pesan user, lalu keluarkan HANYA JSON dengan struktur berikut (tanpa teks tambahan apapun, tanpa markdown code block):\n\n{\n  \"type\": \"Income\" | \"Expense\" | \"Saving\" | \"Transfer\",\n  \"category\": \"string, harus persis salah satu dari daftar kategori sesuai type\",\n  \"amount\": number (dalam Rupiah, ubah 'ribu' jadi x1000, 'juta' jadi x1000000),\n  \"description\": \"ringkasan singkat transaksi\",\n  \"source_from\": \"string dari daftar SOURCE, atau null jika type=Income\",\n  \"source_to\": \"string dari daftar SOURCE, atau null jika type=Expense\",\n  \"status\": \"ok\" atau \"need_clarification\",\n  \"clarification_message\": \"jika status need_clarification, tulis pertanyaan singkat ke user dalam Bahasa Indonesia; jika status ok, isi string kosong\"\n}\n\nAturan tambahan:\n- Expense wajib punya source_from, source_to = null\n- Income wajib punya source_to, source_from = null\n- Saving dan Transfer wajib punya source_from DAN source_to\n- Kalau kategori/sumber yang disebut user tidak ada di daftar valid, atau nominal tidak jelas, set status = \"need_clarification\" dan jelaskan alasannya di clarification_message"
+            },
+            {
+              "content": "={{ $json.original_text }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "textFormat": {
+            "textOptions": {
+              "type": "json_object"
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        1184,
+        0
+      ],
+      "id": "f34ae538-6931-4053-860d-407555ab9260",
+      "name": "OpenAI - Nexus Keuangan",
+      "credentials": {
+        "openAiApi": {
+          "id": "H1l4UPFvXTIbObGr",
+          "name": "OpenAI - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const aiResult = $json.output[0].content[0].text;\nconst chatId = $('Susun Konteks Kategori').item.json.chat_id;\n\nreturn {\n  json: {\n    ...aiResult,\n    chat_id: chatId,\n    date: new Date().toISOString().split('T')[0]\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        0
+      ],
+      "id": "4513f66d-e847-4e79-a78d-fc6de030e0ec",
+      "name": "Ekstrak JSON from OpenAI"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f2578b2c-8a3a-4766-be96-097ed8cceb49",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "ok",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1920,
+        0
+      ],
+      "id": "6ec0b157-1ca2-417b-9596-4137ca812182",
+      "name": "Cek Status Respon AI"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA",
+          "mode": "list",
+          "cachedResultName": "Budgeting with Nexus Finance",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1596962254,
+          "mode": "list",
+          "cachedResultName": "Transaksi",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA/edit#gid=1596962254"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "DATE": "={{ $json.date }}",
+            "TYPE": "={{ $json.type }}",
+            "CATEGORY": "={{ $json.category }}",
+            "AMOUNT": "={{ $json.amount }}",
+            "DESCRIPTION": "={{ $json.description }}",
+            "SOURCE FROM": "={{ $json.source_from }}",
+            "SOURCE TO": "={{ $json.source_to }}",
+            "INPUT": "Bot NEXUS AI"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "DATE",
+              "displayName": "DATE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "TYPE",
+              "displayName": "TYPE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CATEGORY",
+              "displayName": "CATEGORY",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AMOUNT",
+              "displayName": "AMOUNT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "DESCRIPTION",
+              "displayName": "DESCRIPTION",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "INPUT",
+              "displayName": "INPUT",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SOURCE FROM",
+              "displayName": "SOURCE FROM",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SOURCE TO",
+              "displayName": "SOURCE TO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "locationDefine": {
+            "values": {
+              "headerRow": 5
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2304,
+        -128
+      ],
+      "id": "fba3b8cd-b198-4522-9319-17fcda94ab1c",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $('Ekstrak JSON from OpenAI').item.json;\n\nconst formatRupiah = (n) => `Rp ${Number(n).toLocaleString('id-ID')}`;\n\nconst message = `✅ <b>Transaksi Tercatat!</b>\n\n<b>Tipe:</b> ${d.type}\n<b>Kategori:</b> ${d.category}\n<b>Nominal:</b> ${formatRupiah(d.amount)}\n\n📤 <b>Dari:</b> ${d.source_from || '-'}\n📥 <b>Ke:</b> ${d.source_to || '-'}\n\n📝 <b>Ket:</b> <i>${d.description}</i>`;\n\nreturn {\n  json: {\n    chat_id: d.chat_id,\n    message_text: message\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2624,
+        -128
+      ],
+      "id": "77a13e10-dd7f-4c8a-ac6c-fd7f6ffac415",
+      "name": "Markup HTML untuk Telegram"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2944,
+        -128
+      ],
+      "id": "fc519850-77af-4633-b728-437954facdd9",
+      "name": "Kirim Respon Transaksi",
+      "webhookId": "8c2bc9f9-6f0c-4da6-8e50-626cab5a1aca",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $json;\n\nconst message = `❓ <b>Perlu Klarifikasi</b>\n\n${d.clarification_message}\n\n<i>Coba kirim ulang pesan dengan info yang lebih jelas ya.</i>`;\n\nreturn {\n  json: {\n    chat_id: d.chat_id,\n    message_text: message\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2304,
+        176
+      ],
+      "id": "87a247ab-36cb-4745-8d86-068786371106",
+      "name": "Susun Pesan Klarifikasi"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2624,
+        176
+      ],
+      "id": "9e443eac-f827-4c9f-9228-77f4383cad2d",
+      "name": "Kirim Pesan Ambigu",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Get Setup Row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Setup Row": {
+      "main": [
+        [
+          {
+            "node": "Susun Konteks Kategori",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Susun Konteks Kategori": {
+      "main": [
+        [
+          {
+            "node": "OpenAI - Nexus Keuangan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI - Nexus Keuangan": {
+      "main": [
+        [
+          {
+            "node": "Ekstrak JSON from OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ekstrak JSON from OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Cek Status Respon AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cek Status Respon AI": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Susun Pesan Klarifikasi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Markup HTML untuk Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markup HTML untuk Telegram": {
+      "main": [
+        [
+          {
+            "node": "Kirim Respon Transaksi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Susun Pesan Klarifikasi": {
+      "main": [
+        [
+          {
+            "node": "Kirim Pesan Ambigu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "a60f166b-8750-4fb8-839e-562868a3e6cd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f05242d28092f4dc4d00db229b8a1d220a1a73dcfbbedc8afb36ec9b5d7d2e59"
+  },
+  "nodeGroups": [],
+  "id": "BMpoeUT419890HjT",
+  "tags": []
+}
