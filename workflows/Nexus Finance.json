@@ -811,6 +811,44 @@
           "name": "Telegram Bot Nexus Finance"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "const msg = $json.message;\nlet jenisPesan = \"tidak dikenal\";\n\nif (msg.sticker) jenisPesan = \"stiker\";\nelse if (msg.voice) jenisPesan = \"pesan suara\";\nelse if (msg.video_note) jenisPesan = \"video bulat\";\nelse if (msg.video) jenisPesan = \"video\";\nelse if (msg.audio) jenisPesan = \"file audio\";\nelse if (msg.document) jenisPesan = \"dokumen\";\nelse if (msg.location) jenisPesan = \"lokasi\";\nelse if (msg.contact) jenisPesan = \"kontak\";\nelse if (msg.poll) jenisPesan = \"polling\";\nelse if (msg.animation) jenisPesan = \"GIF/animasi\";\n\nconst message_text = `🤔 <b>Format Belum Didukung</b>\\n\\nMaaf, saya belum bisa memproses ${jenisPesan}.\\n\\nSaat ini saya hanya bisa membaca:\\n📝 Teks (untuk catat transaksi atau tanya laporan)\\n📸 Foto struk belanja (dengan caption sumber dana)`;\n\nreturn {\n  json: {\n    chat_id: msg.chat.id,\n    message_text: message_text\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        592,
+        688
+      ],
+      "id": "bf22c3b9-b8c3-4b7d-a813-562c5bbc4957",
+      "name": "Deteksi Jenis Fallback"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        912,
+        688
+      ],
+      "id": "767ea873-5060-49b7-af99-069fa6383c20",
+      "name": "Telegram Send Message Error",
+      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -838,6 +876,13 @@
         [
           {
             "node": "Klasifikasi Intent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Deteksi Jenis Fallback",
             "type": "main",
             "index": 0
           }
@@ -1088,6 +1133,17 @@
           }
         ]
       ]
+    },
+    "Deteksi Jenis Fallback": {
+      "main": [
+        [
+          {
+            "node": "Telegram Send Message Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -1096,7 +1152,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "3d9d15a5-cc93-4ff5-bbfc-8f391c1e849f",
+  "versionId": "51cc2f5f-b910-458a-acb9-87b6fa37e589",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "f05242d28092f4dc4d00db229b8a1d220a1a73dcfbbedc8afb36ec9b5d7d2e59"
