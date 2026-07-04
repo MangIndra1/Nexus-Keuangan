@@ -11,8 +11,8 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.3,
       "position": [
-        -1024,
-        16
+        -720,
+        1056
       ],
       "id": "e9b6e504-b663-41b5-a8ac-3b3f8a6a452e",
       "name": "Telegram Trigger",
@@ -87,7 +87,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        160,
+        368,
         -16
       ],
       "id": "43ed01c9-1a4b-4f2e-8d4d-d53cd865c8b2",
@@ -119,7 +119,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1600,
+        1808,
         -16
       ],
       "id": "614a0e70-aaf9-4de0-a8c4-305217d0f4de",
@@ -138,7 +138,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1920,
+        2128,
         -16
       ],
       "id": "ee359d55-8ea9-4f05-8449-1f5f45cb4320",
@@ -175,7 +175,7 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.3,
       "position": [
-        2224,
+        2432,
         -16
       ],
       "id": "f34ae538-6931-4053-860d-407555ab9260",
@@ -194,7 +194,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2624,
+        2832,
         -16
       ],
       "id": "4513f66d-e847-4e79-a78d-fc6de030e0ec",
@@ -228,7 +228,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2944,
+        3152,
         -16
       ],
       "id": "6ec0b157-1ca2-417b-9596-4137ca812182",
@@ -358,7 +358,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        3312,
+        3520,
         -192
       ],
       "id": "fba3b8cd-b198-4522-9319-17fcda94ab1c",
@@ -377,7 +377,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3632,
+        3840,
         -192
       ],
       "id": "77a13e10-dd7f-4c8a-ac6c-fd7f6ffac415",
@@ -395,7 +395,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3952,
+        4160,
         -192
       ],
       "id": "fc519850-77af-4633-b728-437954facdd9",
@@ -415,7 +415,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3328,
+        3536,
         160
       ],
       "id": "87a247ab-36cb-4745-8d86-068786371106",
@@ -433,7 +433,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3648,
+        3856,
         160
       ],
       "id": "9e443eac-f827-4c9f-9228-77f4383cad2d",
@@ -455,7 +455,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        592,
+        800,
         -384
       ],
       "id": "448554c2-f233-472f-b236-ec52485e1d41",
@@ -477,7 +477,7 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1.1,
       "position": [
-        896,
+        1104,
         -384
       ],
       "id": "292980d4-ab86-4beb-90e9-ae14e6dae402",
@@ -490,7 +490,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1248,
+        1456,
         -384
       ],
       "id": "599a7ae5-c376-48e6-b332-22748d999e47",
@@ -522,7 +522,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1600,
+        1808,
         -384
       ],
       "id": "3f09deb4-357b-4f94-8838-7b923fe9f921",
@@ -541,7 +541,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1920,
+        2128,
         -384
       ],
       "id": "b2b4c115-1651-420e-920f-b6e4d2163e6c",
@@ -582,7 +582,7 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.3,
       "position": [
-        2224,
+        2432,
         -384
       ],
       "id": "f929ac73-469e-4ff2-ba9a-9aab738e08f7",
@@ -619,7 +619,7 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.3,
       "position": [
-        512,
+        720,
         0
       ],
       "id": "4d0f6da6-702d-4e24-88d7-3f87030ec04e",
@@ -638,7 +638,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        912,
+        1120,
         0
       ],
       "id": "946ab7b5-9e4d-4c7f-b60e-5db61a9f2615",
@@ -672,7 +672,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1248,
+        1456,
         0
       ],
       "id": "d758b056-0682-4f49-8f11-f2d7559dab8c",
@@ -704,7 +704,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1600,
+        1808,
         416
       ],
       "id": "0e0596a3-9596-4d8c-930e-c72c339fbcc2",
@@ -723,7 +723,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1920,
+        2128,
         416
       ],
       "id": "f5d79ad7-22c8-45cd-9308-a3bd080d91fc",
@@ -754,7 +754,7 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.3,
       "position": [
-        2224,
+        2432,
         416
       ],
       "id": "bb6ceb5a-62a3-4339-9fb3-b7fb76e566bf",
@@ -773,7 +773,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2624,
+        2832,
         416
       ],
       "id": "0376a98f-433a-4e3a-954d-d2f2e3a0542c",
@@ -791,7 +791,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2944,
+        3152,
         416
       ],
       "id": "71282c66-f22b-4ede-b031-ac8bce3e8587",
@@ -811,7 +811,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        592,
+        800,
         688
       ],
       "id": "bf22c3b9-b8c3-4b7d-a813-562c5bbc4957",
@@ -829,7 +829,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        912,
+        1120,
         688
       ],
       "id": "767ea873-5060-49b7-af99-069fa6383c20",
@@ -871,8 +871,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -784,
-        16
+        -480,
+        1056
       ],
       "id": "b21ec262-c322-4905-a42b-5f3b77b9aaa9",
       "name": "Lookup Master User",
@@ -885,6 +885,275 @@
     },
     {
       "parameters": {
+        "jsCode": "const rows = $input.all().map(item => item.json);\nconst originalMessage = $('Telegram Trigger').item.json.message;\nconst incomingChatId = originalMessage.chat.id;\n\nconst matchedUser = rows.find(row => String(row.chat_id) === String(incomingChatId));\n\nlet statusUser = \"baru\";\nif (matchedUser) {\n  statusUser = matchedUser.status;\n}\n\nreturn {\n  json: {\n    status_user: statusUser,\n    spreadsheet_id: matchedUser ? matchedUser.spreadsheet_id : null,\n    nama: matchedUser ? matchedUser.nama : null,\n    chat_id: incomingChatId,\n    message: originalMessage\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -176,
+        1056
+      ],
+      "id": "3534a6df-7d1d-47d8-9318-61d8fdd50d04",
+      "name": "Cari User Terdaftar"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.status_user }}",
+                    "rightValue": "aktif",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "c6d521e3-a559-4c31-9294-dbb9ed9a1a94"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Aktif"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "3d72dc58-3934-4640-81ed-ca486c9436c8",
+                    "leftValue": "={{ $json.status_user }}",
+                    "rightValue": "menunggu_email",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "MenungguEmail"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "6620f8db-cb1b-49c6-a3c6-0ee0f3d3eea9",
+                    "leftValue": "={{ $json.status_user }}",
+                    "rightValue": "baru",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Baru"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        96,
+        1040
+      ],
+      "id": "1c3d8f1f-09a1-4a15-a954-172479520e71",
+      "name": "Sudah Terdaftar?"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk",
+          "mode": "list",
+          "cachedResultName": "Nexus Control Panel",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Master Users",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chat_id": "={{ $json.chat_id }}",
+            "nama": "={{ $json.message.from.first_name }}",
+            "status": "menunggu_email",
+            "tanggal_daftar": "={{ $now.format('yyyy-MM-dd') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nama",
+              "displayName": "nama",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "spreadsheet_id",
+              "displayName": "spreadsheet_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tanggal_daftar",
+              "displayName": "tanggal_daftar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "locationDefine": {
+            "values": {
+              "headerRow": 2
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        352,
+        1680
+      ],
+      "id": "45bc58bc-669c-4ebc-9675-3bc28628e7a3",
+      "name": "Append New Users",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const message = `👋 <b>Selamat datang di Nexus Keuangan!</b>\n\nUntuk mulai, saya perlu menyiapkan spreadsheet pribadi kamu.\n\nKirim alamat <b>Gmail</b> kamu ya, nanti spreadsheet-nya saya buatkan dan langsung jadi milikmu.`;\n\nreturn {\n  json: {\n    chat_id: $json.chat_id,\n    message_text: message\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        1680
+      ],
+      "id": "bf5db992-fa81-47e3-8a2b-7016dcbbe5be",
+      "name": "Code Response"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1136,
+        1680
+      ],
+      "id": "9113d581-8a87-4d73-958e-fa7f4f4e82f8",
+      "name": "Telegram Send Message Response",
+      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const originalMessage = $json.message;\nconst text = (originalMessage.text || '').trim();\n\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nconst isValidEmail = emailRegex.test(text);\nconst isGmail = /@gmail\\.com$/i.test(text);\n\nreturn {\n  json: {\n    email_valid: isValidEmail && isGmail,\n    email: text,\n    chat_id: $json.chat_id,\n    nama: originalMessage.from.first_name\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        432,
+        1056
+      ],
+      "id": "d06dd694-9164-4184-b3b8-0d3b98e3afae",
+      "name": "Validasi format email"
+    },
+    {
+      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -894,8 +1163,8 @@
           },
           "conditions": [
             {
-              "id": "e4863caa-d436-47ed-91d1-f0ebcf0f57c4",
-              "leftValue": "={{ $json.terdaftar }}",
+              "id": "9c8c84dd-8dd0-4339-be6c-90bd1de9e8b7",
+              "leftValue": "={{ $json.email_valid }}",
               "rightValue": "",
               "operator": {
                 "type": "boolean",
@@ -911,24 +1180,261 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -288,
-        16
+        752,
+        1056
       ],
-      "id": "f1cdefba-eb77-404d-8395-ba99c4a7b58f",
-      "name": "Sudah terdaftar?"
+      "id": "bbfca307-cbe9-4e2b-ad82-a522a44fa0cc",
+      "name": "Email valid?"
     },
     {
       "parameters": {
-        "jsCode": "const rows = $input.all().map(item => item.json);\nconst originalMessage = $('Telegram Trigger').item.json.message;\nconst incomingChatId = originalMessage.chat.id;\n\nconst matchedUser = rows.find(row => String(row.chat_id) === String(incomingChatId));\n\nreturn {\n  json: {\n    terdaftar: !!matchedUser,\n    spreadsheet_id: matchedUser ? matchedUser.spreadsheet_id : null,\n    nama: matchedUser ? matchedUser.nama : null,\n    chat_id: incomingChatId,\n    message: originalMessage\n  }\n};"
+        "chatId": "={{ $json.chat_id }}",
+        "text": "=❌ Format email tidak valid atau bukan Gmail. Coba kirim ulang alamat Gmail kamu ya.",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1088,
+        1312
+      ],
+      "id": "cbc9fce0-dae4-4d80-95de-db63687ee091",
+      "name": "Telegram Send False Email",
+      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1A8mv5Y0TUCKsC1VmfMforh0hKElebdE1ZIE9bJwKGCA",
+          "mode": "id"
+        },
+        "name": "=Nexus Keuangan - {{ $json.nama }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1088,
+        1040
+      ],
+      "id": "26892d2f-60eb-4e2e-ab2b-f88ced9b99d3",
+      "name": "Copy File",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "aZ7cItbkcK3eO0kh",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "share",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Copy File').item.json.id }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('Validasi format email').item.json.email }}"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1440,
+        1040
+      ],
+      "id": "f8b10396-da27-471a-9841-e3b90cc3c776",
+      "name": "Share ke email user",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "aZ7cItbkcK3eO0kh",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk",
+          "mode": "list",
+          "cachedResultName": "Nexus Control Panel",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Master Users",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": 0,
+            "chat_id": "={{ $('Validasi format email').item.json.chat_id }}",
+            "email": "={{ $('Validasi format email').item.json.email }}",
+            "spreadsheet_id": "={{ $('Copy File').item.json.id }}",
+            "status": "aktif"
+          },
+          "matchingColumns": [
+            "chat_id"
+          ],
+          "schema": [
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nama",
+              "displayName": "nama",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "spreadsheet_id",
+              "displayName": "spreadsheet_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tanggal_daftar",
+              "displayName": "tanggal_daftar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "locationDefine": {
+            "values": {
+              "headerRow": 2,
+              "firstDataRow": 3
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1776,
+        1040
+      ],
+      "id": "365b53c3-3cf2-4733-9aad-b7f91aeb97c7",
+      "name": "Update baris di Master Users",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const spreadsheetId = $('Copy File').item.json.id;\nconst spreadsheetUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/edit`;\n\nconst message = `✅ <b>Setup Selesai!</b>\n\nSpreadsheet kamu sudah jadi dan sudah dibagikan ke emailmu:\n${spreadsheetUrl}\n\n📌 Sebelum mulai catat transaksi, isi dulu di spreadsheet:\n- <b>Budget Planned</b> di sheet Monthly Budgeting (batas pengeluaran per kategori)\n- <b>Planned Allocation</b> untuk kategori income (mau ditaruh di sumber dana mana)\n\nSetelah itu, kirim transaksi kamu seperti biasa ya — teks atau foto struk!`;\n\nreturn {\n  json: {\n    chat_id: $('Validasi format email').item.json.chat_id,\n    message_text: message\n  }\n};"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -544,
-        16
+        2128,
+        1040
       ],
-      "id": "3534a6df-7d1d-47d8-9318-61d8fdd50d04",
-      "name": "Cari User Terdaftar"
+      "id": "5de50b72-eee0-4536-9afa-d9ed41dc19b2",
+      "name": "Balasan sukses"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2464,
+        1040
+      ],
+      "id": "434ead79-218a-4ede-9f75-c7269dd39cf0",
+      "name": "Telegram Send Email Success",
+      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -1236,7 +1742,18 @@
         ]
       ]
     },
-    "Sudah terdaftar?": {
+    "Cari User Terdaftar": {
+      "main": [
+        [
+          {
+            "node": "Sudah Terdaftar?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sudah Terdaftar?": {
       "main": [
         [
           {
@@ -1244,14 +1761,112 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Validasi format email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append New Users",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
-    "Cari User Terdaftar": {
+    "Append New Users": {
       "main": [
         [
           {
-            "node": "Sudah terdaftar?",
+            "node": "Code Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Response": {
+      "main": [
+        [
+          {
+            "node": "Telegram Send Message Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validasi format email": {
+      "main": [
+        [
+          {
+            "node": "Email valid?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email valid?": {
+      "main": [
+        [
+          {
+            "node": "Copy File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram Send False Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copy File": {
+      "main": [
+        [
+          {
+            "node": "Share ke email user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Share ke email user": {
+      "main": [
+        [
+          {
+            "node": "Update baris di Master Users",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update baris di Master Users": {
+      "main": [
+        [
+          {
+            "node": "Balasan sukses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Balasan sukses": {
+      "main": [
+        [
+          {
+            "node": "Telegram Send Email Success",
             "type": "main",
             "index": 0
           }
@@ -1265,7 +1880,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "a87570b8-8d4f-4f2e-8fa8-8955ccba65ee",
+  "versionId": "9166ed0e-95b1-4431-a92e-8b486e3a12e2",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "f05242d28092f4dc4d00db229b8a1d220a1a73dcfbbedc8afb36ec9b5d7d2e59"
