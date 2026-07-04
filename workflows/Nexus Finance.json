@@ -41,8 +41,8 @@
                     "leftValue": "={{ $json.message.photo }}",
                     "rightValue": "",
                     "operator": {
-                      "type": "object",
-                      "operation": "exists",
+                      "type": "array",
+                      "operation": "notEmpty",
                       "singleValue": true
                     },
                     "id": "9fa3a009-5b92-4a64-bfc6-28d6aaf1b544"
@@ -191,7 +191,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const aiResult = $json.output[0].content[0].text;\nconst chatId = $('Susun Konteks Kategori').item.json.chat_id;\n\nreturn {\n  json: {\n    ...aiResult,\n    chat_id: chatId,\n    date: new Date().toISOString().split('T')[0]\n  }\n};"
+        "jsCode": "const aiResult = $json.output[0].content[0].text;\nconst chatId = $('Switch').item.json.message.chat.id;\n\nreturn {\n  json: {\n    ...aiResult,\n    chat_id: chatId,\n    date: new Date().toISOString().split('T')[0]\n  }\n};"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -362,8 +362,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        2304,
-        -128
+        2288,
+        -176
       ],
       "id": "fba3b8cd-b198-4522-9319-17fcda94ab1c",
       "name": "Append row in sheet",
@@ -381,8 +381,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2624,
-        -128
+        2608,
+        -176
       ],
       "id": "77a13e10-dd7f-4c8a-ac6c-fd7f6ffac415",
       "name": "Markup HTML untuk Telegram"
@@ -399,8 +399,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2944,
-        -128
+        2928,
+        -176
       ],
       "id": "fc519850-77af-4633-b728-437954facdd9",
       "name": "Kirim Respon Transaksi",
@@ -449,6 +449,156 @@
           "name": "Telegram Bot Nexus Finance"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.message.photo[$json.message.photo.length - 1].file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        592,
+        -384
+      ],
+      "id": "448554c2-f233-472f-b236-ec52485e1d41",
+      "name": "Get a File",
+      "webhookId": "09cf28a1-4c5a-49d3-8050-ed35d5eaf23b",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "destinationKey": "base64_image",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        896,
+        -384
+      ],
+      "id": "292980d4-ab86-4beb-90e9-ae14e6dae402",
+      "name": "Get Base64 String"
+    },
+    {
+      "parameters": {
+        "jsCode": "return {\n  json: {\n    image_data_uri: `data:image/jpeg;base64,${$json.base64_image}`,\n    chat_id: $('Switch').item.json.message.chat.id\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1248,
+        -384
+      ],
+      "id": "599a7ae5-c376-48e6-b332-22748d999e47",
+      "name": "Olah String Base64"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA",
+          "mode": "list",
+          "cachedResultName": "Budgeting with Nexus Finance",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1276418944,
+          "mode": "list",
+          "cachedResultName": "Setup",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA/edit#gid=1276418944"
+        },
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {
+              "rangeDefinition": "specifyRangeA1",
+              "range": "A1:J22"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1600,
+        -384
+      ],
+      "id": "3f09deb4-357b-4f94-8838-7b923fe9f921",
+      "name": "Get Setup Row (Photo Flow)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows = $input.all().map(item => item.json).filter(row => row.row_number >= 4);\n\nconst struktur = {\n  TRANSACTION_TYPE_CATEGORIES: { Income: [], Expense: [], Saving: [], Transfer: [] },\n  SOURCE: { Bank: [], Wallet: [], RDN: [] }\n};\n\nfor (const row of rows) {\n  if (row.col_2) struktur.TRANSACTION_TYPE_CATEGORIES.Income.push(row.col_2);\n  if (row.col_3) struktur.TRANSACTION_TYPE_CATEGORIES.Expense.push(row.col_3);\n  if (row.col_4) struktur.TRANSACTION_TYPE_CATEGORIES.Saving.push(row.col_4);\n  if (row.col_5) struktur.TRANSACTION_TYPE_CATEGORIES.Transfer.push(row.col_5);\n  if (row.col_7) struktur.SOURCE.Bank.push(row.col_7);\n  if (row.col_8) struktur.SOURCE.Wallet.push(row.col_8);\n  if (row.col_9) struktur.SOURCE.RDN.push(row.col_9);\n}\n\nconst contextText = `\nTRANSACTION_TYPE_CATEGORIES:\n- Income: ${struktur.TRANSACTION_TYPE_CATEGORIES.Income.join(', ')}\n- Expense: ${struktur.TRANSACTION_TYPE_CATEGORIES.Expense.join(', ')}\n- Saving: ${struktur.TRANSACTION_TYPE_CATEGORIES.Saving.join(', ')}\n- Transfer: ${struktur.TRANSACTION_TYPE_CATEGORIES.Transfer.join(', ')}\n\nSOURCE:\n- Bank: ${struktur.SOURCE.Bank.join(', ')}\n- Wallet: ${struktur.SOURCE.Wallet.join(', ')}\n- RDN: ${struktur.SOURCE.RDN.join(', ')}\n`.trim();\n\nconst imageUri = $('Olah String Base64').item.json.image_data_uri;\nconst chatId = $('Switch').item.json.message.chat.id;\nconst caption = $('Switch').item.json.message.caption || '';\n\nreturn {\n  json: {\n    context_kategori: contextText,\n    image_data_uri: imageUri,\n    caption: caption,\n    chat_id: chatId\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        -384
+      ],
+      "id": "b2b4c115-1651-420e-920f-b6e4d2163e6c",
+      "name": "Susun Konteks Kategori (Photo Flow)"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=Kamu adalah asisten pencatatan keuangan yang mengekstrak data transaksi dari FOTO STRUK BELANJA.\n\nBerikut daftar kategori dan sumber dana yang VALID di sistem ini — kamu WAJIB hanya memilih dari daftar ini:\n\n{{ $json.context_kategori }}\n\nBaca struk dalam gambar, lalu keluarkan HANYA JSON dengan struktur berikut (tanpa teks tambahan, tanpa markdown code block):\n\n{\n  \"type\": \"Expense\",\n  \"category\": \"string, harus persis salah satu dari daftar kategori Expense\",\n  \"amount\": number (total belanja dalam Rupiah, ambil dari total akhir struk),\n  \"description\": \"daftar item belanja dipisah koma, ringkas\",\n  \"source_from\": \"string dari daftar SOURCE jika terlihat di struk (misal metode pembayaran), atau null jika tidak terlihat\",\n  \"source_to\": null,\n  \"status\": \"ok\" atau \"need_clarification\",\n  \"clarification_message\": \"jika status need_clarification, jelaskan kenapa (misal: total tidak terbaca jelas, kategori tidak jelas); jika ok, isi string kosong\"\n}\n\nCatatan: struk selalu berupa transaksi Expense. Sumber dana biasanya disebutkan user lewat caption pesan (dikirim terpisah dari gambar) — gunakan itu sebagai source_from jika tersedia dan valid sesuai daftar SOURCE. Jika caption kosong atau sumbernya tidak dikenali, set status = \"need_clarification\"."
+            },
+            {
+              "content": "=Sumber dana yang disebutkan user (jika ada): {{ $json.caption }}"
+            },
+            {
+              "type": "image",
+              "imageUrl": "={{ $json.image_data_uri }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "textFormat": {
+            "textOptions": {
+              "type": "json_object"
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        2224,
+        -384
+      ],
+      "id": "f929ac73-469e-4ff2-ba9a-9aab738e08f7",
+      "name": "Message a Open AI",
+      "credentials": {
+        "openAiApi": {
+          "id": "H1l4UPFvXTIbObGr",
+          "name": "OpenAI - Nexus Keuangan"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -466,7 +616,13 @@
     },
     "Switch": {
       "main": [
-        [],
+        [
+          {
+            "node": "Get a File",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Get Setup Row",
@@ -570,6 +726,72 @@
           }
         ]
       ]
+    },
+    "Get a File": {
+      "main": [
+        [
+          {
+            "node": "Get Base64 String",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Base64 String": {
+      "main": [
+        [
+          {
+            "node": "Olah String Base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Olah String Base64": {
+      "main": [
+        [
+          {
+            "node": "Get Setup Row (Photo Flow)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Setup Row (Photo Flow)": {
+      "main": [
+        [
+          {
+            "node": "Susun Konteks Kategori (Photo Flow)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Susun Konteks Kategori (Photo Flow)": {
+      "main": [
+        [
+          {
+            "node": "Message a Open AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a Open AI": {
+      "main": [
+        [
+          {
+            "node": "Ekstrak JSON from OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -578,7 +800,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "a60f166b-8750-4fb8-839e-562868a3e6cd",
+  "versionId": "18e03c15-127a-4d8a-bf4e-443f29bdcb72",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "f05242d28092f4dc4d00db229b8a1d220a1a73dcfbbedc8afb36ec9b5d7d2e59"
