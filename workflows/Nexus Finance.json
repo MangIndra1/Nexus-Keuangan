@@ -11,7 +11,7 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.3,
       "position": [
-        0,
+        -112,
         0
       ],
       "id": "e9b6e504-b663-41b5-a8ac-3b3f8a6a452e",
@@ -87,7 +87,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        272,
+        160,
         -16
       ],
       "id": "43ed01c9-1a4b-4f2e-8d4d-d53cd865c8b2",
@@ -121,8 +121,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        592,
-        0
+        1600,
+        -16
       ],
       "id": "614a0e70-aaf9-4de0-a8c4-305217d0f4de",
       "name": "Get Setup Row",
@@ -140,8 +140,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        896,
-        0
+        1920,
+        -16
       ],
       "id": "ee359d55-8ea9-4f05-8449-1f5f45cb4320",
       "name": "Susun Konteks Kategori"
@@ -177,8 +177,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.3,
       "position": [
-        1184,
-        0
+        2224,
+        -16
       ],
       "id": "f34ae538-6931-4053-860d-407555ab9260",
       "name": "OpenAI - Nexus Keuangan",
@@ -196,8 +196,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1600,
-        0
+        2624,
+        -16
       ],
       "id": "4513f66d-e847-4e79-a78d-fc6de030e0ec",
       "name": "Ekstrak JSON from OpenAI"
@@ -230,8 +230,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1920,
-        0
+        2944,
+        -16
       ],
       "id": "6ec0b157-1ca2-417b-9596-4137ca812182",
       "name": "Cek Status Respon AI"
@@ -362,8 +362,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        2288,
-        -176
+        3312,
+        -192
       ],
       "id": "fba3b8cd-b198-4522-9319-17fcda94ab1c",
       "name": "Append row in sheet",
@@ -381,8 +381,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2608,
-        -176
+        3632,
+        -192
       ],
       "id": "77a13e10-dd7f-4c8a-ac6c-fd7f6ffac415",
       "name": "Markup HTML untuk Telegram"
@@ -399,8 +399,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2928,
-        -176
+        3952,
+        -192
       ],
       "id": "fc519850-77af-4633-b728-437954facdd9",
       "name": "Kirim Respon Transaksi",
@@ -419,8 +419,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2304,
-        176
+        3328,
+        160
       ],
       "id": "87a247ab-36cb-4745-8d86-068786371106",
       "name": "Susun Pesan Klarifikasi"
@@ -437,8 +437,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2624,
-        176
+        3648,
+        160
       ],
       "id": "9e443eac-f827-4c9f-9228-77f4383cad2d",
       "name": "Kirim Pesan Ambigu",
@@ -599,6 +599,218 @@
           "name": "OpenAI - Nexus Keuangan"
         }
       }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Kamu adalah pengklasifikasi pesan untuk bot pencatatan keuangan. Baca pesan user, tentukan apakah dia:\n- \"transaksi\": ingin mencatat transaksi baru (ada nominal uang + aktivitas keuangan)\n- \"laporan\": bertanya tentang data keuangan yang sudah ada (saldo, laporan, pengeluaran, dll)\n\nBalas HANYA dengan salah satu kata: transaksi atau laporan. Tanpa tanda baca, tanpa penjelasan, tanpa markdown."
+            },
+            {
+              "content": "={{ $json.message.text }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        512,
+        0
+      ],
+      "id": "4d0f6da6-702d-4e24-88d7-3f87030ec04e",
+      "name": "Klasifikasi Intent",
+      "credentials": {
+        "openAiApi": {
+          "id": "H1l4UPFvXTIbObGr",
+          "name": "OpenAI - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const intentRaw = $json.output[0].content[0].text;\nconst intent = intentRaw.trim().toLowerCase();\n\nreturn {\n  json: {\n    intent: intent, // \"transaksi\" atau \"laporan\"\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        912,
+        0
+      ],
+      "id": "946ab7b5-9e4d-4c7f-b60e-5db61a9f2615",
+      "name": "Ekstrak hasil klasifikasi"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "2401950c-229e-4c68-a2f0-5401a69a2cb7",
+              "leftValue": "={{ $json.intent }}",
+              "rightValue": "transaksi",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1248,
+        0
+      ],
+      "id": "d758b056-0682-4f49-8f11-f2d7559dab8c",
+      "name": "Percabangan intent"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA",
+          "mode": "list",
+          "cachedResultName": "Budgeting with Nexus Finance",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Monthly Budgeting",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Tq4N2N6qTyR1pc_SjdbXETtV3jzEJPq9FvIEp1yfmPA/edit#gid=0"
+        },
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {
+              "rangeDefinition": "specifyRangeA1",
+              "range": "A1:AG31"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1600,
+        416
+      ],
+      "id": "0e0596a3-9596-4d8c-930e-c72c339fbcc2",
+      "name": "Baca Monthly Budgeting",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows = $input.all().map(item => item.json);\nconst byRow = {};\nrows.forEach(r => byRow[r.row_number] = r);\n\nconst colMap = {A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:8,I:9,J:10,K:11,L:12,M:13,N:14,O:15,P:16,Q:17,R:18,S:19,T:20,U:21,V:22,W:23,X:24,Y:25,Z:26,AA:27,AB:28,AC:29,AD:30,AE:31,AF:32,AG:33};\nconst col = (rowNum, letter) => {\n  const r = byRow[rowNum];\n  if (!r) return null;\n  return r['col_' + colMap[letter]] ?? null;\n};\n\n// Overview (B=label, C=value)\nconst overview = {};\nfor (let rn = 11; rn <= 15; rn++) {\n  const label = col(rn, 'B');\n  if (label) overview[label] = col(rn, 'C');\n}\n\n// Income by Category (E-I)\nconst incomeByCategory = [];\nfor (let rn = 12; rn <= 18; rn++) {\n  const category = col(rn, 'E');\n  if (!category) continue;\n  incomeByCategory.push({\n    category, amount: col(rn,'F'), plannedAllocation: col(rn,'G'),\n    actualAllocation: col(rn,'H'), status: col(rn,'I')\n  });\n}\n\n// Expense by Category (K-O), pisahkan baris Total\nconst expenseByCategory = [];\nlet expenseTotal = null;\nfor (let rn = 12; rn <= 30; rn++) {\n  const category = col(rn, 'K');\n  if (!category) continue;\n  const entry = { category, actual: col(rn,'L'), budgetPlanned: col(rn,'M'), remaining: col(rn,'N'), status: col(rn,'O') };\n  category === 'Total' ? expenseTotal = entry : expenseByCategory.push(entry);\n}\n\n// Saving & Assets (Q-V)\nconst savingAssets = [];\nfor (let rn = 12; rn <= 15; rn++) {\n  const category = col(rn, 'Q');\n  if (!category) continue;\n  savingAssets.push({\n    category, current: col(rn,'R'), saved: col(rn,'S'),\n    plan: col(rn,'T'), progressPct: col(rn,'U'), vehicle: col(rn,'V')\n  });\n}\n\n// Budget Flow (X-AA), pisahkan baris Total\nconst budgetFlow = [];\nlet budgetFlowTotal = null;\nfor (let rn = 12; rn <= 30; rn++) {\n  const source = col(rn, 'X');\n  if (!source) continue;\n  const entry = { source, in: col(rn,'Y'), out: col(rn,'Z'), net: col(rn,'AA') };\n  source === 'Total' ? budgetFlowTotal = entry : budgetFlow.push(entry);\n}\n\n// Balance per Source (AC-AF), pisahkan baris Total\nconst balancePerSource = [];\nlet balanceTotal = null;\nfor (let rn = 12; rn <= 30; rn++) {\n  const source = col(rn, 'AC');\n  if (!source) continue;\n  const entry = { source, opening: col(rn,'AD'), netMovement: col(rn,'AE'), closing: col(rn,'AF') };\n  source === 'Total' ? balanceTotal = entry : balancePerSource.push(entry);\n}\n\nconst structuredData = {\n  overview, incomeByCategory, expenseByCategory, expenseTotal,\n  savingAssets, budgetFlow, budgetFlowTotal, balancePerSource, balanceTotal\n};\n\nreturn {\n  json: {\n    laporan_data: JSON.stringify(structuredData, null, 2),\n    original_question: $('Switch').item.json.message.text,\n    chat_id: $('Switch').item.json.message.chat.id\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        416
+      ],
+      "id": "f5d79ad7-22c8-45cd-9308-a3bd080d91fc",
+      "name": "Terjemah Struktur"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=Kamu adalah asisten keuangan pribadi yang menjawab pertanyaan user berdasarkan data keuangan bulan berjalan.\n\nBerikut data lengkap keuangan user bulan ini (dalam format JSON):\n\n{{ $json.laporan_data }}\n\nTugasmu: jawab pertanyaan user HANYA berdasarkan data di atas — jangan mengarang angka. Jawab dalam Bahasa Indonesia yang natural dan ramah, seperti asisten yang berbicara langsung ke user (bukan format laporan formal).\n\nAturan:\n- Kalau user tanya spesifik (misal saldo satu sumber dana), jawab singkat dan langsung ke poin, sebutkan nominal dengan format \"Rp X.XXX.XXX\".\n- Kalau user tanya laporan luas/menyeluruh (misal \"bagaimana laporan bulan ini\"), rangkum poin-poin penting: income vs expense, kategori yang melebihi budget (status ❌ Warning), progress saving, dan beri saran singkat di akhir.\n- Kalau data yang diminta tidak ditemukan di JSON (misal nama sumber dana yang tidak dikenali), katakan dengan jujur bahwa datanya tidak ditemukan, jangan menebak.\n- Gunakan HTML minimal untuk Telegram: <b>tebal</b> untuk angka penting, <i>miring</i> untuk catatan tambahan. Jangan gunakan markdown (**), jangan gunakan tag HTML lain selain <b> dan <i>.\n\nFORMAT WAJIB — SANGAT PENTING:\n- Balasan akan dikirim ke Telegram dengan parse mode HTML. Kamu HANYA boleh pakai tag <b>tebal</b> dan <i>miring</i>.\n- DILARANG KERAS memakai sintaks Markdown apapun: JANGAN pakai **, JANGAN pakai ###, JANGAN pakai tanda pagar, JANGAN pakai tanda bintang, JANGAN pakai list dengan tanda \"-\" di awal baris.\n- Untuk daftar/list, tulis dalam kalimat naratif biasa atau pakai emoji seperti 📌 di awal baris, BUKAN tanda \"-\" atau \"*\".\n- Untuk judul bagian, cukup pakai <b>Judul</b> diikuti baris baru, JANGAN pakai tanda pagar (#)."
+            },
+            {
+              "content": "={{ $json.original_question }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        2224,
+        416
+      ],
+      "id": "bb6ceb5a-62a3-4339-9fb3-b7fb76e566bf",
+      "name": "Susun Narasi Laporan",
+      "credentials": {
+        "openAiApi": {
+          "id": "H1l4UPFvXTIbObGr",
+          "name": "OpenAI - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let answer = $json.output[0].content[0].text;\n\nanswer = answer\n  .replace(/\\*\\*(.+?)\\*\\*/g, '<b>$1</b>')\n  .replace(/#{1,6}\\s*(.+)/g, '<b>$1</b>')\n  .replace(/^-\\s+/gm, '📌 ');\n\nconst chatId = $('Switch').item.json.message.chat.id;\n\nreturn {\n  json: {\n    chat_id: chatId,\n    message_text: answer\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2624,
+        416
+      ],
+      "id": "0376a98f-433a-4e3a-954d-d2f2e3a0542c",
+      "name": "Ekstrak Teks Jawaban"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2944,
+        416
+      ],
+      "id": "71282c66-f22b-4ede-b031-ac8bce3e8587",
+      "name": "Telegram Send Message",
+      "webhookId": "7976a322-d897-42e4-b4a7-92f96fb40c2d",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -625,7 +837,7 @@
         ],
         [
           {
-            "node": "Get Setup Row",
+            "node": "Klasifikasi Intent",
             "type": "main",
             "index": 0
           }
@@ -792,6 +1004,90 @@
           }
         ]
       ]
+    },
+    "Klasifikasi Intent": {
+      "main": [
+        [
+          {
+            "node": "Ekstrak hasil klasifikasi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ekstrak hasil klasifikasi": {
+      "main": [
+        [
+          {
+            "node": "Percabangan intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Percabangan intent": {
+      "main": [
+        [
+          {
+            "node": "Get Setup Row",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Baca Monthly Budgeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baca Monthly Budgeting": {
+      "main": [
+        [
+          {
+            "node": "Terjemah Struktur",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Terjemah Struktur": {
+      "main": [
+        [
+          {
+            "node": "Susun Narasi Laporan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Susun Narasi Laporan": {
+      "main": [
+        [
+          {
+            "node": "Ekstrak Teks Jawaban",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ekstrak Teks Jawaban": {
+      "main": [
+        [
+          {
+            "node": "Telegram Send Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -800,7 +1096,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "18e03c15-127a-4d8a-bf4e-443f29bdcb72",
+  "versionId": "3d9d15a5-cc93-4ff5-bbfc-8f391c1e849f",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "f05242d28092f4dc4d00db229b8a1d220a1a73dcfbbedc8afb36ec9b5d7d2e59"
