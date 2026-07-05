@@ -1,0 +1,295 @@
+{
+  "name": "Nexus - Provisioning Spreadsheet",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "chat_id",
+              "type": "any"
+            },
+            {
+              "name": "email"
+            },
+            {
+              "name": "nama"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2ce1467d-fec8-42e8-83b1-da0b00576752",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1A8mv5Y0TUCKsC1VmfMforh0hKElebdE1ZIE9bJwKGCA",
+          "mode": "id"
+        },
+        "name": "=Nexus Keuangan - {{ $json.nama }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        224,
+        0
+      ],
+      "id": "bcf45612-b712-4753-b42f-b89017eae4de",
+      "name": "Copy File",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "aZ7cItbkcK3eO0kh",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "share",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Copy File').item.json.id }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('When Executed by Another Workflow').item.json.email }}"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        448,
+        0
+      ],
+      "id": "dd43279d-f803-4a6a-9e74-1263e57c3f1c",
+      "name": "Share ke email user",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "aZ7cItbkcK3eO0kh",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk",
+          "mode": "list",
+          "cachedResultName": "Nexus Control Panel",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Master Users",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": 0,
+            "chat_id": "={{ $('When Executed by Another Workflow').item.json.chat_id }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}",
+            "spreadsheet_id": "={{ $('Copy File').item.json.id }}",
+            "status": "aktif"
+          },
+          "matchingColumns": [
+            "chat_id"
+          ],
+          "schema": [
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nama",
+              "displayName": "nama",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "spreadsheet_id",
+              "displayName": "spreadsheet_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tanggal_daftar",
+              "displayName": "tanggal_daftar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "locationDefine": {
+            "values": {
+              "headerRow": 2,
+              "firstDataRow": 3
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        672,
+        0
+      ],
+      "id": "73060ad5-ec61-4725-888f-34015b1f2ccb",
+      "name": "Update baris di Master Users",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nreturn {\n  json: {\n    spreadsheet_id: $('Copy File').item.json.id,\n    spreadsheet_url: `https://docs.google.com/spreadsheets/d/${$('Copy File').item.json.id}/edit`\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        0
+      ],
+      "id": "57b9e2c4-ce84-4fd5-a06d-50821355d335",
+      "name": "Edit Fields (Set)"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Copy File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copy File": {
+      "main": [
+        [
+          {
+            "node": "Share ke email user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Share ke email user": {
+      "main": [
+        [
+          {
+            "node": "Update baris di Master Users",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update baris di Master Users": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields (Set)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields (Set)": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "a6f6d350-825f-436c-ba6d-8f2f7123021f",
+  "meta": {
+    "instanceId": "f05242d28092f4dc4d00db229b8a1d220a1a73dcfbbedc8afb36ec9b5d7d2e59"
+  },
+  "nodeGroups": [],
+  "id": "qUI5xCaQdzzfHiZL",
+  "tags": []
+}
