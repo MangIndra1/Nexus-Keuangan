@@ -977,6 +977,31 @@
               },
               "renameOutput": true,
               "outputKey": "Baru"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "3392f005-a5fc-4e95-a0e7-7fa9710463cd",
+                    "leftValue": "={{ $json.status_user }}",
+                    "rightValue": "nonaktif",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Nonaktif"
             }
           ]
         },
@@ -1093,7 +1118,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        352,
+        784,
         1680
       ],
       "id": "45bc58bc-669c-4ebc-9675-3bc28628e7a3",
@@ -1112,7 +1137,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        720,
+        1152,
         1680
       ],
       "id": "bf5db992-fa81-47e3-8a2b-7016dcbbe5be",
@@ -1130,7 +1155,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1136,
+        1504,
         1680
       ],
       "id": "9113d581-8a87-4d73-958e-fa7f4f4e82f8",
@@ -1145,7 +1170,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const originalMessage = $json.message;\nconst text = (originalMessage.text || '').trim();\n\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nconst isValidEmail = emailRegex.test(text);\nconst isGmail = /@gmail\\.com$/i.test(text);\n\nreturn {\n  json: {\n    email_valid: isValidEmail && isGmail,\n    email: text,\n    chat_id: $json.chat_id,\n    nama: originalMessage.from.first_name\n  }\n};"
+        "jsCode": "const originalMessage = $json.message;\nconst text = (originalMessage.text || '').trim();\nconst chatId = $json.chat_id;\nconst nama = originalMessage.from.first_name;\n\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nconst isValidEmail = emailRegex.test(text);\nconst isGmail = /@gmail\\.com$/i.test(text);\n\nlet errorReason = null;\nif (!text) errorReason = \"bukan_teks\";\nelse if (!isValidEmail || !isGmail) errorReason = \"format_salah\";\n\nreturn {\n  json: {\n    email_valid: !errorReason,\n    error_reason: errorReason,\n    email: text,\n    chat_id: chatId,\n    nama: nama\n  }\n};"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1193,7 +1218,7 @@
     {
       "parameters": {
         "chatId": "={{ $json.chat_id }}",
-        "text": "=❌ Format email tidak valid atau bukan Gmail. Coba kirim ulang alamat Gmail kamu ya.",
+        "text": "={{ $json.message_text }}",
         "additionalFields": {
           "appendAttribution": false,
           "parse_mode": "HTML"
@@ -1202,7 +1227,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1152,
+        1392,
         1360
       ],
       "id": "cbc9fce0-dae4-4d80-95de-db63687ee091",
@@ -1222,7 +1247,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1520,
+        1760,
         1040
       ],
       "id": "5de50b72-eee0-4536-9afa-d9ed41dc19b2",
@@ -1240,7 +1265,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1904,
+        2144,
         1040
       ],
       "id": "434ead79-218a-4ede-9f75-c7269dd39cf0",
@@ -1265,9 +1290,9 @@
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "chat_id": "={{ $json.chat_id }}",
-            "email": "={{ $json.email }}",
-            "nama": "={{ $json.nama }}"
+            "chat_id": "={{ $('Validasi format email').item.json.chat_id }}",
+            "email": "={{ $('Validasi format email').item.json.email }}",
+            "nama": "={{ $('Validasi format email').item.json.nama }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -1309,7 +1334,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        1152,
+        1392,
         1040
       ],
       "id": "5344f12b-ba91-4501-97c0-34e29f169544",
@@ -1486,6 +1511,16 @@
                 "operation": "equals",
                 "name": "filter.operator.equals"
               }
+            },
+            {
+              "id": "7c409602-16c8-4be2-a8d0-8e776ec6bd1c",
+              "leftValue": "={{ $json.status_user }}",
+              "rightValue": "aktif",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
             }
           ],
           "combinator": "and"
@@ -1513,9 +1548,9 @@
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "chat_id": "={{ $json.chat_id }}",
-            "email": "={{ $json.email }}",
-            "nama": "={{ $json.nama }}"
+            "chat_id": "={{ $('Cari User Terdaftar').item.json.chat_id }}",
+            "email": "={{ $('Cari User Terdaftar').item.json.email }}",
+            "nama": "={{ $('Cari User Terdaftar').item.json.nama }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -1557,8 +1592,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        112,
-        -992
+        576,
+        -896
       ],
       "id": "7e49ca76-fe50-42dc-a788-111afa774ad7",
       "name": "Call 'Nexus - Provisioning Spreadsheet'1"
@@ -1570,8 +1605,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        464,
-        -992
+        928,
+        -896
       ],
       "id": "23767e3d-130a-497c-91bc-870cd3f44cd5",
       "name": "Balasan konfirmasi reset"
@@ -1588,12 +1623,111 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        832,
-        -992
+        1296,
+        -896
       ],
       "id": "f93ff19a-747c-4d82-8b41-9098b0021119",
       "name": "Kirim Pesan Reset Sheet",
       "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const reason = $json.error_reason;\n\nconst message = reason === \"bukan_teks\"\n  ? \"🤔 Sepertinya itu bukan teks. Kirim alamat <b>Gmail</b> kamu ya dalam bentuk teks, supaya saya bisa siapkan spreadsheet-nya.\"\n  : \"❌ Format email tidak valid atau bukan Gmail. Coba kirim ulang alamat Gmail kamu ya.\";\n\nreturn {\n  json: {\n    chat_id: $json.chat_id,\n    message_text: message\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1104,
+        1360
+      ],
+      "id": "adad17d8-9db8-4d28-b0bd-2eeefe4d4abe",
+      "name": "Balasan Email Invalid"
+    },
+    {
+      "parameters": {
+        "jsCode": "const chatId = $json.chat_id;\n\nconst message = `🔒 <b>Akses Dinonaktifkan</b>\n\nAkun kamu saat ini tidak aktif. Silakan hubungi admin untuk info lebih lanjut.`;\n\nreturn {\n  json: {\n    chat_id: chatId,\n    message_text: message\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        464,
+        2016
+      ],
+      "id": "8e511563-12d1-4dc6-8c87-777d612cef67",
+      "name": "Code untuk pesan blokir"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        784,
+        2016
+      ],
+      "id": "013365fc-f522-43a8-93db-4b0971e41f2d",
+      "name": "Telegram untuk pesan blokir",
+      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "⏳ Sedang menyiapkan spreadsheet kamu, tunggu sebentar ya...",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        -896
+      ],
+      "id": "86c9c886-a039-489b-a4d8-9063675c0c49",
+      "name": "Kirim Pesan Menunggu",
+      "webhookId": "b06d0904-a379-430f-aa9d-a0274ec0e554",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "⏳ Sedang menyiapkan spreadsheet baru, tunggu sebentar ya...",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1104,
+        1040
+      ],
+      "id": "5dc57e8e-b8be-411f-8392-0edeab713cc3",
+      "name": "Kirim Pesan Menunggu1",
+      "webhookId": "b06d0904-a379-430f-aa9d-a0274ec0e554",
       "credentials": {
         "telegramApi": {
           "id": "F2UToIJRQiorbiK3",
@@ -1968,6 +2102,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Code untuk pesan blokir",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -2008,14 +2149,14 @@
       "main": [
         [
           {
-            "node": "Call 'Nexus - Provisioning Spreadsheet'",
+            "node": "Kirim Pesan Menunggu1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Telegram Send False Email",
+            "node": "Balasan Email Invalid",
             "type": "main",
             "index": 0
           }
@@ -2092,7 +2233,7 @@
       "main": [
         [
           {
-            "node": "Call 'Nexus - Provisioning Spreadsheet'1",
+            "node": "Kirim Pesan Menunggu",
             "type": "main",
             "index": 0
           }
@@ -2127,6 +2268,50 @@
           }
         ]
       ]
+    },
+    "Balasan Email Invalid": {
+      "main": [
+        [
+          {
+            "node": "Telegram Send False Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code untuk pesan blokir": {
+      "main": [
+        [
+          {
+            "node": "Telegram untuk pesan blokir",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kirim Pesan Menunggu": {
+      "main": [
+        [
+          {
+            "node": "Call 'Nexus - Provisioning Spreadsheet'1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kirim Pesan Menunggu1": {
+      "main": [
+        [
+          {
+            "node": "Call 'Nexus - Provisioning Spreadsheet'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -2135,7 +2320,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "35dc85e9-3663-4617-8f33-08039732da27",
+  "versionId": "5ffe6514-9614-481d-8481-8af14bfad02e",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "f05242d28092f4dc4d00db229b8a1d220a1a73dcfbbedc8afb36ec9b5d7d2e59"
