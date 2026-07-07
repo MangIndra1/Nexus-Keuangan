@@ -902,6 +902,31 @@
               },
               "renameOutput": true,
               "outputKey": "Nonaktif"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "10818607-cbcf-4093-bbfe-bec58e98cbad",
+                    "leftValue": "={{ $json.status_user }}",
+                    "rightValue": "menunggu_kode",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "MenungguKode"
             }
           ]
         },
@@ -938,7 +963,7 @@
           "value": {
             "chat_id": "={{ $json.chat_id }}",
             "nama": "={{ $json.message.from.first_name }}",
-            "status": "menunggu_email",
+            "status": "menunggu_kode",
             "tanggal_daftar": "={{ $now.format('yyyy-MM-dd') }}"
           },
           "matchingColumns": [],
@@ -1032,7 +1057,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const message = `👋 <b>Selamat datang di Nexus Keuangan!</b>\n\nUntuk mulai, saya perlu menyiapkan spreadsheet pribadi kamu.\n\nKirim alamat <b>Gmail</b> kamu ya, nanti spreadsheet-nya saya buatkan dan langsung jadi milikmu.`;\n\nreturn {\n  json: {\n    chat_id: $json.chat_id,\n    message_text: message\n  }\n};"
+        "jsCode": "const message = `👋 <b>Selamat datang di Nexus Keuangan!</b>\n\nSistem ini masih private. Masukkan <b>kode undangan</b> untuk melanjutkan.`;\n\nreturn {\n  json: {\n    chat_id: $json.chat_id,\n    message_text: message\n  }\n};"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1356,8 +1381,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        480,
-        2464
+        640,
+        2448
       ],
       "id": "8e511563-12d1-4dc6-8c87-777d612cef67",
       "name": "Code untuk pesan blokir"
@@ -1619,7 +1644,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const status = $json.status_user;\nconst chatId = $json.chat_id;\n\nlet message;\n\nif (status === 'aktif') {\n  message = `🤖 <b>Panduan Nexus Keuangan</b>\n\n📝 <b>Catat transaksi (teks)</b>\nContoh: \"Beli makan 15rb pakai Cash\"\n\n📸 <b>Catat transaksi (foto struk)</b>\nKirim foto struk + caption sumber dana, contoh: \"Jago\"\n\n📊 <b>Tanya laporan</b>\nContoh: \"Berapa sisa saldo BNI?\" atau \"Bagaimana laporan bulan ini?\"\n\n🗑️ <b>Hapus transaksi terakhir</b>\n/hapus — lihat preview dulu\n/hapus konfirmasi — hapus permanen\n\n🔄 <b>Spreadsheet bermasalah/hilang?</b>\n/resetsheet — buat spreadsheet baru\n\n❓ <b>Panduan ini</b>\n/help`;\n} else if (status === 'menunggu_email') {\n  message = `📧 Kamu masih dalam proses pendaftaran. Kirim alamat <b>Gmail</b> kamu untuk melanjutkan setup spreadsheet pribadimu.`;\n} else if (status === 'nonaktif') {\n  message = `🔒 Akun kamu tidak aktif. Hubungi admin untuk info lebih lanjut.`;\n} else {\n  message = `👋 Sepertinya kamu belum mulai. Kirim pesan apa saja untuk memulai pendaftaran.`;\n}\n\nreturn { json: { chat_id: chatId, message_text: message } };"
+        "jsCode": "const status = $json.status_user;\nconst chatId = $json.chat_id;\n\nlet message;\n\nif (status === 'aktif') {\n  message = `🤖 <b>Panduan Nexus Keuangan</b>\n\n📝 <b>Catat transaksi (teks)</b>\nContoh: \"Beli makan 15rb pakai Cash\"\n\n📸 <b>Catat transaksi (foto struk)</b>\nKirim foto struk + caption sumber dana, contoh: \"Jago\"\n\n📊 <b>Tanya laporan</b>\nContoh: \"Berapa sisa saldo BNI?\" atau \"Bagaimana laporan bulan ini?\"\n\n🗑️ <b>Hapus transaksi terakhir</b>\n/hapus — lihat preview dulu\n/hapus konfirmasi — hapus permanen\n\n🔄 <b>Spreadsheet bermasalah/hilang?</b>\n/resetsheet — buat spreadsheet baru\n\n❓ <b>Panduan ini</b>\n/help`;\n} else if (status === 'menunggu_email') {\n  message = `📧 Kamu masih dalam proses pendaftaran. Kirim alamat <b>Gmail</b> kamu untuk melanjutkan setup spreadsheet pribadimu.`;\n} else if (status === 'menunggu_kode') {\n  message = `🔒 Masukkan kode undangan untuk mulai menggunakan Nexus Keuangan.`;\n} else if (status === 'nonaktif') {\n  message = `🔒 Akun kamu tidak aktif. Hubungi admin untuk info lebih lanjut.`;\n} else {\n  message = `👋 Sepertinya kamu belum mulai. Kirim pesan apa saja untuk memulai pendaftaran.`;\n}\n\nreturn { json: { chat_id: chatId, message_text: message } };"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -2671,11 +2696,322 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        800,
-        2464
+        960,
+        2448
       ],
       "id": "8d74b817-a176-4d6c-9bf3-965e5b848c11",
       "name": "Telegram untuk pesan blokir",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const KODE_UNDANGAN = \"NEXUS2026\";\n\nconst text = $('Cari User Terdaftar').item.json.message.text.trim();\nconst chatId = $('Cari User Terdaftar').item.json.chat_id;\n\nreturn {\n  json: {\n    kode_benar: text === KODE_UNDANGAN,\n    chat_id: chatId\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        2752
+      ],
+      "id": "6eccee9d-69db-4c91-966f-b9d56f6d3b52",
+      "name": "Cek kecocokan kode"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "dfb4d4fb-ee4b-48ca-8efb-f64630bb5d9a",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        784,
+        2752
+      ],
+      "id": "4cbf9fab-45c8-465a-8292-e868a3ddc129",
+      "name": "Kode benar?"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "❌ Kode undangan salah. Coba lagi ya.",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1168,
+        3040
+      ],
+      "id": "ed91203a-0dc6-470d-a0c3-a89f700295e3",
+      "name": "Kirim Pesan kode salah",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk",
+          "mode": "list",
+          "cachedResultName": "Nexus Control Panel",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Master Users",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1-PMbDYx2YZ_iv7r0oiNB9WYYrT8zi1UfAlzl5Ag6DBk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": 0,
+            "chat_id": "={{ $('Cari User Terdaftar').item.json.chat_id }}",
+            "status": "menunggu_email"
+          },
+          "matchingColumns": [
+            "chat_id"
+          ],
+          "schema": [
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nama",
+              "displayName": "nama",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "spreadsheet_id",
+              "displayName": "spreadsheet_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tanggal_daftar",
+              "displayName": "tanggal_daftar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "locationDefine": {
+            "values": {
+              "headerRow": 2,
+              "firstDataRow": 3
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1168,
+        2736
+      ],
+      "id": "6ca635ac-712f-4536-9501-5f1ac0eb2e8e",
+      "name": "Update status jadi menunggu_email",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const message = `✅ Kode benar!\n\nSekarang kirim alamat <b>Gmail</b> kamu ya, nanti spreadsheet-nya saya buatkan dan langsung jadi milikmu.`;\n\nreturn { json: { chat_id: $('Cari User Terdaftar').item.json.chat_id, message_text: message } };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1504,
+        2736
+      ],
+      "id": "e03256f9-e14a-4eb1-aaf0-ca7752b6835f",
+      "name": "Pesan minta email"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1808,
+        2736
+      ],
+      "id": "6fbe3a98-cac6-4c9e-80b5-9fecaa19c071",
+      "name": "Kirim Pesan Kode Sukses",
       "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
       "credentials": {
         "telegramApi": {
@@ -3058,6 +3394,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Cek kecocokan kode",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -3392,6 +3735,57 @@
           }
         ]
       ]
+    },
+    "Cek kecocokan kode": {
+      "main": [
+        [
+          {
+            "node": "Kode benar?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kode benar?": {
+      "main": [
+        [
+          {
+            "node": "Update status jadi menunggu_email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Kirim Pesan kode salah",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update status jadi menunggu_email": {
+      "main": [
+        [
+          {
+            "node": "Pesan minta email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pesan minta email": {
+      "main": [
+        [
+          {
+            "node": "Kirim Pesan Kode Sukses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -3400,7 +3794,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "8e0639cd-d503-477f-8701-e25b094fbf03",
+  "versionId": "7c32296e-c0fb-4b39-9987-8e424d5d66f6",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "f05242d28092f4dc4d00db229b8a1d220a1a73dcfbbedc8afb36ec9b5d7d2e59"
