@@ -11,8 +11,8 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.3,
       "position": [
-        -1072,
-        0
+        -2048,
+        -16
       ],
       "id": "e9b6e504-b663-41b5-a8ac-3b3f8a6a452e",
       "name": "Telegram Trigger",
@@ -87,8 +87,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        368,
-        -16
+        384,
+        432
       ],
       "id": "43ed01c9-1a4b-4f2e-8d4d-d53cd865c8b2",
       "name": "Switch"
@@ -119,8 +119,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1808,
-        -16
+        1824,
+        432
       ],
       "id": "614a0e70-aaf9-4de0-a8c4-305217d0f4de",
       "name": "Get Setup Row",
@@ -139,8 +139,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2128,
-        -32
+        2144,
+        416
       ],
       "id": "ee359d55-8ea9-4f05-8449-1f5f45cb4320",
       "name": "Susun Konteks Kategori"
@@ -176,8 +176,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.3,
       "position": [
-        2432,
-        -32
+        2448,
+        416
       ],
       "id": "f34ae538-6931-4053-860d-407555ab9260",
       "name": "OpenAI - Nexus Keuangan",
@@ -195,8 +195,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2832,
-        -32
+        2848,
+        416
       ],
       "id": "4513f66d-e847-4e79-a78d-fc6de030e0ec",
       "name": "Ekstrak JSON from OpenAI"
@@ -229,8 +229,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3152,
-        -32
+        3168,
+        416
       ],
       "id": "6ec0b157-1ca2-417b-9596-4137ca812182",
       "name": "Cek Status Respon AI"
@@ -359,8 +359,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        3536,
-        -336
+        3552,
+        112
       ],
       "id": "fba3b8cd-b198-4522-9319-17fcda94ab1c",
       "name": "Append row in sheet",
@@ -379,36 +379,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3856,
-        -352
+        3872,
+        96
       ],
       "id": "77a13e10-dd7f-4c8a-ac6c-fd7f6ffac415",
       "name": "Markup HTML untuk Telegram"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        4176,
-        -352
-      ],
-      "id": "fc519850-77af-4633-b728-437954facdd9",
-      "name": "Kirim Respon Transaksi",
-      "webhookId": "8c2bc9f9-6f0c-4da6-8e50-626cab5a1aca",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -417,36 +392,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3536,
-        160
+        3552,
+        608
       ],
       "id": "87a247ab-36cb-4745-8d86-068786371106",
       "name": "Susun Pesan Klarifikasi"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        3856,
-        160
-      ],
-      "id": "9e443eac-f827-4c9f-9228-77f4383cad2d",
-      "name": "Kirim Pesan Ambigu",
-      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -457,8 +407,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        800,
-        -544
+        816,
+        -96
       ],
       "id": "448554c2-f233-472f-b236-ec52485e1d41",
       "name": "Get a File",
@@ -479,8 +429,8 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1.1,
       "position": [
-        1104,
-        -544
+        1120,
+        -96
       ],
       "id": "292980d4-ab86-4beb-90e9-ae14e6dae402",
       "name": "Get Base64 String"
@@ -492,8 +442,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1456,
-        -544
+        1472,
+        -96
       ],
       "id": "599a7ae5-c376-48e6-b332-22748d999e47",
       "name": "Olah String Base64"
@@ -524,8 +474,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1744,
-        -544
+        1760,
+        -96
       ],
       "id": "3f09deb4-357b-4f94-8838-7b923fe9f921",
       "name": "Get Setup Row (Photo Flow)",
@@ -544,8 +494,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2128,
-        -560
+        2144,
+        -112
       ],
       "id": "b2b4c115-1651-420e-920f-b6e4d2163e6c",
       "name": "Susun Konteks Kategori (Photo Flow)"
@@ -585,8 +535,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.3,
       "position": [
-        2464,
-        -560
+        2480,
+        -112
       ],
       "id": "f929ac73-469e-4ff2-ba9a-9aab738e08f7",
       "name": "Message a Open AI",
@@ -622,8 +572,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.3,
       "position": [
-        720,
-        0
+        736,
+        448
       ],
       "id": "4d0f6da6-702d-4e24-88d7-3f87030ec04e",
       "name": "Klasifikasi Intent",
@@ -641,8 +591,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1120,
-        0
+        1136,
+        448
       ],
       "id": "946ab7b5-9e4d-4c7f-b60e-5db61a9f2615",
       "name": "Ekstrak hasil klasifikasi"
@@ -675,8 +625,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1456,
-        0
+        1472,
+        448
       ],
       "id": "d758b056-0682-4f49-8f11-f2d7559dab8c",
       "name": "Percabangan intent"
@@ -707,8 +657,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1808,
-        560
+        1824,
+        1008
       ],
       "id": "0e0596a3-9596-4d8c-930e-c72c339fbcc2",
       "name": "Baca Monthly Budgeting",
@@ -727,8 +677,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2128,
-        544
+        2144,
+        992
       ],
       "id": "f5d79ad7-22c8-45cd-9308-a3bd080d91fc",
       "name": "Terjemah Struktur"
@@ -758,8 +708,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.3,
       "position": [
-        2432,
-        544
+        2448,
+        992
       ],
       "id": "bb6ceb5a-62a3-4339-9fb3-b7fb76e566bf",
       "name": "Susun Narasi Laporan",
@@ -777,36 +727,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2832,
-        544
+        2848,
+        992
       ],
       "id": "0376a98f-433a-4e3a-954d-d2f2e3a0542c",
       "name": "Ekstrak Teks Jawaban"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        3152,
-        544
-      ],
-      "id": "71282c66-f22b-4ede-b031-ac8bce3e8587",
-      "name": "Telegram Send Message",
-      "webhookId": "7976a322-d897-42e4-b4a7-92f96fb40c2d",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -815,36 +740,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        800,
-        688
+        816,
+        1136
       ],
       "id": "bf22c3b9-b8c3-4b7d-a813-562c5bbc4957",
       "name": "Deteksi Jenis Fallback"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        1120,
-        688
-      ],
-      "id": "767ea873-5060-49b7-af99-069fa6383c20",
-      "name": "Telegram Send Message Error",
-      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -875,8 +775,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -832,
-        0
+        -1776,
+        -16
       ],
       "id": "b21ec262-c322-4905-a42b-5f3b77b9aaa9",
       "name": "Lookup Master User",
@@ -894,8 +794,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -528,
-        0
+        -1472,
+        -16
       ],
       "id": "3534a6df-7d1d-47d8-9318-61d8fdd50d04",
       "name": "Cari User Terdaftar"
@@ -1010,8 +910,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        96,
-        1040
+        112,
+        1488
       ],
       "id": "1c3d8f1f-09a1-4a15-a954-172479520e71",
       "name": "Sudah Terdaftar?"
@@ -1118,8 +1018,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        784,
-        1680
+        800,
+        2128
       ],
       "id": "45bc58bc-669c-4ebc-9675-3bc28628e7a3",
       "name": "Append New Users",
@@ -1137,36 +1037,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1152,
-        1680
+        1168,
+        2128
       ],
       "id": "bf5db992-fa81-47e3-8a2b-7016dcbbe5be",
       "name": "Code Response"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        1504,
-        1680
-      ],
-      "id": "9113d581-8a87-4d73-958e-fa7f4f4e82f8",
-      "name": "Telegram Send Message Response",
-      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -1175,8 +1050,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        432,
-        1056
+        448,
+        1504
       ],
       "id": "d06dd694-9164-4184-b3b8-0d3b98e3afae",
       "name": "Validasi format email"
@@ -1209,36 +1084,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        752,
-        1056
+        768,
+        1504
       ],
       "id": "bbfca307-cbe9-4e2b-ad82-a522a44fa0cc",
       "name": "Email valid?"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        1392,
-        1360
-      ],
-      "id": "cbc9fce0-dae4-4d80-95de-db63687ee091",
-      "name": "Telegram Send False Email",
-      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -1247,36 +1097,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1760,
-        1040
+        1776,
+        1488
       ],
       "id": "5de50b72-eee0-4536-9afa-d9ed41dc19b2",
       "name": "Balasan sukses"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        2144,
-        1040
-      ],
-      "id": "434ead79-218a-4ede-9f75-c7269dd39cf0",
-      "name": "Telegram Send Email Success",
-      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -1334,150 +1159,11 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        1392,
-        1040
+        1408,
+        1488
       ],
       "id": "5344f12b-ba91-4501-97c0-34e29f169544",
       "name": "Call 'Nexus - Provisioning Spreadsheet'"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        2496,
-        -288
-      ],
-      "id": "ac5de011-102a-40e9-8e45-fc3579858d74",
-      "name": "Kirim Pesan Error Spreadsheet",
-      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const chatId = $('Cari User Terdaftar').item.json.chat_id;\n\nconst message = `⚠️ <b>Ada Masalah Akses Spreadsheet</b>\n\nSepertinya spreadsheet kamu tidak bisa diakses (mungkin terhapus atau izin akses berubah).\n\nKirim /resetsheet untuk membuat spreadsheet baru.`;\n\nreturn {\n  json: {\n    chat_id: chatId,\n    message_text: message\n  }\n};"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2128,
-        -288
-      ],
-      "id": "8905e904-b2ac-43d9-813a-b8d5f4a48e0f",
-      "name": "Pesan Error Spreadsheet"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        2496,
-        256
-      ],
-      "id": "568e782f-701a-401b-80ec-15511faa8080",
-      "name": "Kirim Pesan Error Spreadsheet1",
-      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const chatId = $('Cari User Terdaftar').item.json.chat_id;\n\nconst message = `⚠️ <b>Ada Masalah Akses Spreadsheet</b>\n\nSepertinya spreadsheet kamu tidak bisa diakses (mungkin terhapus atau izin akses berubah).\n\nKirim /resetsheet untuk membuat spreadsheet baru.`;\n\nreturn {\n  json: {\n    chat_id: chatId,\n    message_text: message\n  }\n};"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2128,
-        256
-      ],
-      "id": "dd60a62a-1382-4bbf-807e-7aabd0c3e88d",
-      "name": "Pesan Error Spreadsheet1"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        4176,
-        -80
-      ],
-      "id": "216d94b7-d7d4-4a7f-85af-64aa41da9255",
-      "name": "Kirim Pesan Error Spreadsheet2",
-      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const chatId = $('Cari User Terdaftar').item.json.chat_id;\n\nconst message = `⚠️ <b>Ada Masalah Akses Spreadsheet</b>\n\nSepertinya spreadsheet kamu tidak bisa diakses (mungkin terhapus atau izin akses berubah).\n\nKirim /resetsheet untuk membuat spreadsheet baru.`;\n\nreturn {\n  json: {\n    chat_id: chatId,\n    message_text: message\n  }\n};"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        3856,
-        -80
-      ],
-      "id": "6577aa06-94e4-44b0-bc62-9762f28acee2",
-      "name": "Pesan Error Spreadsheet2"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        2512,
-        816
-      ],
-      "id": "ddffa0fb-aa09-4e8a-9c42-6e93db46cb42",
-      "name": "Kirim Pesan Error Spreadsheet3",
-      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -1487,7 +1173,46 @@
       "typeVersion": 2,
       "position": [
         2144,
-        816
+        160
+      ],
+      "id": "8905e904-b2ac-43d9-813a-b8d5f4a48e0f",
+      "name": "Pesan Error Spreadsheet"
+    },
+    {
+      "parameters": {
+        "jsCode": "const chatId = $('Cari User Terdaftar').item.json.chat_id;\n\nconst message = `⚠️ <b>Ada Masalah Akses Spreadsheet</b>\n\nSepertinya spreadsheet kamu tidak bisa diakses (mungkin terhapus atau izin akses berubah).\n\nKirim /resetsheet untuk membuat spreadsheet baru.`;\n\nreturn {\n  json: {\n    chat_id: chatId,\n    message_text: message\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2144,
+        704
+      ],
+      "id": "dd60a62a-1382-4bbf-807e-7aabd0c3e88d",
+      "name": "Pesan Error Spreadsheet1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const chatId = $('Cari User Terdaftar').item.json.chat_id;\n\nconst message = `⚠️ <b>Ada Masalah Akses Spreadsheet</b>\n\nSepertinya spreadsheet kamu tidak bisa diakses (mungkin terhapus atau izin akses berubah).\n\nKirim /resetsheet untuk membuat spreadsheet baru.`;\n\nreturn {\n  json: {\n    chat_id: chatId,\n    message_text: message\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3872,
+        368
+      ],
+      "id": "6577aa06-94e4-44b0-bc62-9762f28acee2",
+      "name": "Pesan Error Spreadsheet2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const chatId = $('Cari User Terdaftar').item.json.chat_id;\n\nconst message = `⚠️ <b>Ada Masalah Akses Spreadsheet</b>\n\nSepertinya spreadsheet kamu tidak bisa diakses (mungkin terhapus atau izin akses berubah).\n\nKirim /resetsheet untuk membuat spreadsheet baru.`;\n\nreturn {\n  json: {\n    chat_id: chatId,\n    message_text: message\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        1264
       ],
       "id": "0bed7605-5ae5-464c-887a-da5d02ae51fa",
       "name": "Pesan Error Spreadsheet3"
@@ -1530,7 +1255,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -256,
+        -816,
         0
       ],
       "id": "ca7e9299-a615-48c9-b67c-8b0763faf903",
@@ -1592,8 +1317,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        576,
-        -896
+        560,
+        -1056
       ],
       "id": "7e49ca76-fe50-42dc-a788-111afa774ad7",
       "name": "Call 'Nexus - Provisioning Spreadsheet'1"
@@ -1605,36 +1330,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        928,
-        -896
+        912,
+        -1056
       ],
       "id": "23767e3d-130a-497c-91bc-870cd3f44cd5",
       "name": "Balasan konfirmasi reset"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        1296,
-        -896
-      ],
-      "id": "f93ff19a-747c-4d82-8b41-9098b0021119",
-      "name": "Kirim Pesan Reset Sheet",
-      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -1643,8 +1343,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1104,
-        1360
+        1120,
+        1808
       ],
       "id": "adad17d8-9db8-4d28-b0bd-2eeefe4d4abe",
       "name": "Balasan Email Invalid"
@@ -1656,60 +1356,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        464,
-        2016
+        480,
+        2464
       ],
       "id": "8e511563-12d1-4dc6-8c87-777d612cef67",
       "name": "Code untuk pesan blokir"
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ $json.message_text }}",
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        784,
-        2016
-      ],
-      "id": "013365fc-f522-43a8-93db-4b0971e41f2d",
-      "name": "Telegram untuk pesan blokir",
-      "webhookId": "3b93d30b-f639-491d-876d-cbf299a45b54",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "⏳ Sedang menyiapkan spreadsheet kamu, tunggu sebentar ya...",
-        "additionalFields": {
-          "appendAttribution": false
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        224,
-        -896
-      ],
-      "id": "86c9c886-a039-489b-a4d8-9063675c0c49",
-      "name": "Kirim Pesan Menunggu",
-      "webhookId": "b06d0904-a379-430f-aa9d-a0274ec0e554",
-      "credentials": {
-        "telegramApi": {
-          "id": "F2UToIJRQiorbiK3",
-          "name": "Telegram Bot Nexus Finance"
-        }
-      }
     },
     {
       "parameters": {
@@ -1722,12 +1373,1310 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1104,
-        1040
+        1120,
+        1488
       ],
       "id": "5dc57e8e-b8be-411f-8392-0edeab713cc3",
       "name": "Kirim Pesan Menunggu1",
       "webhookId": "b06d0904-a379-430f-aa9d-a0274ec0e554",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ab6b59b1-ad47-4e15-bbb6-34f47d03a6e2",
+              "leftValue": "={{ $json.message.text.toLowerCase().startsWith('/hapus') }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "40a467db-0795-46c3-8bc5-6de88e3a33d8",
+              "leftValue": "={{ $json.status_user }}",
+              "rightValue": "aktif",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -368,
+        16
+      ],
+      "id": "a434455f-0d1a-4161-bc43-3e72160a7397",
+      "name": "Deteksi command /hapus"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $('Cari User Terdaftar').item.json.spreadsheet_id }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Transaksi"
+        },
+        "options": {
+          "dataLocationOnSheet": {
+            "values": {
+              "rangeDefinition": "specifyRange",
+              "headerRow": 5,
+              "firstDataRow": 6
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        560,
+        -576
+      ],
+      "id": "662bc1f8-3118-499d-b5f8-216c1c1ebb1f",
+      "name": "Baca sheet Transaksi",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $('Cari User Terdaftar').item.json.message.text.trim().toLowerCase();\nconst mode = text === '/hapus konfirmasi' ? 'konfirmasi' : 'preview';\n\nreturn {\n  json: {\n    mode: mode,\n    chat_id: $('Cari User Terdaftar').item.json.chat_id,\n    spreadsheet_id: $('Cari User Terdaftar').item.json.spreadsheet_id\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        -576
+      ],
+      "id": "0bd5ea9a-6dd6-4939-9aac-43dae8b469c8",
+      "name": "Deteksi Mode Hapus"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b2e40920-6baa-4e16-bddd-fcd4195a45f6",
+              "leftValue": "={{ $json.mode }}",
+              "rightValue": "konfirmasi",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1216,
+        -576
+      ],
+      "id": "d93816a4-46a3-4a9b-aa61-1146c10ac62d",
+      "name": "Cek mode"
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $json;\n\nif (!d.found) {\n  return { json: { chat_id: d.chat_id, message_text: \"Tidak ada transaksi yang bisa dihapus.\" } };\n}\n\nconst formatRupiah = (n) => `Rp ${Number(n).toLocaleString('id-ID')}`;\n\nconst message = `🗑️ <b>Transaksi Terakhir Kamu</b>\n\nTanggal: ${d.date}\nTipe: ${d.type}\nKategori: ${d.category}\nNominal: ${formatRupiah(d.amount)}\nKet: ${d.description}\n\nKetik <b>/hapus konfirmasi</b> untuk menghapus transaksi ini secara permanen.`;\n\nreturn { json: { chat_id: d.chat_id, message_text: message } };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1568,
+        -400
+      ],
+      "id": "40323744-4000-43c5-aa41-b2d62e97d5e5",
+      "name": "Node Code + Telegram"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $json.spreadsheet_id }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Transaksi",
+          "mode": "name"
+        },
+        "startIndex": "={{ $json.row_number }}"
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1568,
+        -736
+      ],
+      "id": "82f1e069-ee16-4b9a-9b7d-91498ac74cd5",
+      "name": "Node Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nsOZqwFH7jEtDBXx",
+          "name": "Google Sheets - Nexus Keuangan"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $('Cari Transaksi Terakhir').item.json;\n\nconst message = `✅ <b>Transaksi Dihapus</b>\n\nTransaksi \"${d.description}\" sebesar Rp ${Number(d.amount).toLocaleString('id-ID')} berhasil dihapus.`;\n\nreturn { json: { chat_id: d.chat_id, message_text: message } };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1888,
+        -736
+      ],
+      "id": "2a1b5cb5-c5ca-4d1c-a198-8c0a2fb54193",
+      "name": "Node Code + Telegram: Konfirmasi sukses"
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows = $input.all().map(item => item.json);\nconst dataRows = rows.filter(r => r.TYPE);\n\nconst prevData = $('Deteksi Mode Hapus').item.json;\nconst lastRow = dataRows[dataRows.length - 1];\n\nif (!lastRow) {\n  return { json: { found: false, chat_id: prevData.chat_id, mode: prevData.mode } };\n}\n\nreturn {\n  json: {\n    found: true,\n    row_number: lastRow.row_number,\n    date: lastRow.DATE,\n    type: lastRow.TYPE,\n    category: lastRow.CATEGORY,\n    amount: lastRow.AMOUNT,\n    description: lastRow.DESCRIPTION,\n    chat_id: prevData.chat_id,\n    spreadsheet_id: prevData.spreadsheet_id,\n    mode: prevData.mode\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        -576
+      ],
+      "id": "a7bcc53c-e30f-4b65-b8a1-fc8cb9f5f89d",
+      "name": "Cari Transaksi Terakhir"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c5376dfb-a1b9-4732-a158-fd51ae802ab3",
+              "leftValue": "={{ $json.message.text.trim().toLowerCase() }}",
+              "rightValue": "/help",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1136,
+        -16
+      ],
+      "id": "ce4d1a10-9d87-474e-9c8c-10c9263f4af3",
+      "name": "Deteksi /help"
+    },
+    {
+      "parameters": {
+        "jsCode": "const status = $json.status_user;\nconst chatId = $json.chat_id;\n\nlet message;\n\nif (status === 'aktif') {\n  message = `🤖 <b>Panduan Nexus Keuangan</b>\n\n📝 <b>Catat transaksi (teks)</b>\nContoh: \"Beli makan 15rb pakai Cash\"\n\n📸 <b>Catat transaksi (foto struk)</b>\nKirim foto struk + caption sumber dana, contoh: \"Jago\"\n\n📊 <b>Tanya laporan</b>\nContoh: \"Berapa sisa saldo BNI?\" atau \"Bagaimana laporan bulan ini?\"\n\n🗑️ <b>Hapus transaksi terakhir</b>\n/hapus — lihat preview dulu\n/hapus konfirmasi — hapus permanen\n\n🔄 <b>Spreadsheet bermasalah/hilang?</b>\n/resetsheet — buat spreadsheet baru\n\n❓ <b>Panduan ini</b>\n/help`;\n} else if (status === 'menunggu_email') {\n  message = `📧 Kamu masih dalam proses pendaftaran. Kirim alamat <b>Gmail</b> kamu untuk melanjutkan setup spreadsheet pribadimu.`;\n} else if (status === 'nonaktif') {\n  message = `🔒 Akun kamu tidak aktif. Hubungi admin untuk info lebih lanjut.`;\n} else {\n  message = `👋 Sepertinya kamu belum mulai. Kirim pesan apa saja untuk memulai pendaftaran.`;\n}\n\nreturn { json: { chat_id: chatId, message_text: message } };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -688,
+        -1344
+      ],
+      "id": "84226b12-8a91-4a7e-9295-9b14c737c9a4",
+      "name": "Susun pesan bantuan kontekstual"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -320,
+        -1344
+      ],
+      "id": "cf3d0402-81e5-4092-b395-e8744e3d2a2f",
+      "name": "Kirim Pesan Bantuan",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "⏳ Sedang menyiapkan spreadsheet kamu, tunggu sebentar ya...",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        192,
+        -1056
+      ],
+      "id": "d57aadf0-ded4-44e6-bf57-38c60f423293",
+      "name": "Kirim Pesan Menunggu",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1248,
+        -1056
+      ],
+      "id": "e252fe11-ceb0-4abe-96e2-25c8ad4db597",
+      "name": "Kirim Pesan Reset Sheet",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2240,
+        -736
+      ],
+      "id": "28a173d7-1745-4f2c-a7d6-e32bc2394d04",
+      "name": "Kirim Pesan Hapus Konfirmasi",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1888,
+        -400
+      ],
+      "id": "c38d59b3-2d01-49e5-ae05-9273eae81d57",
+      "name": "Kirim Pesan Hapus",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2512,
+        160
+      ],
+      "id": "e816a732-19ad-42ac-a69d-f3796b139208",
+      "name": "Kirim Pesan Error Spreadsheet",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2512,
+        704
+      ],
+      "id": "e63f3dad-efbb-472a-86c6-b6836bf0d93a",
+      "name": "Kirim Pesan Error Spreadsheet1",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2512,
+        1264
+      ],
+      "id": "435935cd-aefb-4dab-aeba-c9de5afbd5c5",
+      "name": "Kirim Pesan Error Spreadsheet3",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4192,
+        96
+      ],
+      "id": "faf27f0a-1ffa-4104-a0fd-cd6ffcc9cd53",
+      "name": "Kirim Respon Transaksi",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4192,
+        368
+      ],
+      "id": "0c344934-e79d-4be4-ae25-de2a8fcfd579",
+      "name": "Kirim Pesan Error Spreadsheet2",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3872,
+        608
+      ],
+      "id": "6bd6f37a-9e2a-4e6b-9b95-08b2fb876c86",
+      "name": "Kirim Pesan Ambigu",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3184,
+        992
+      ],
+      "id": "803b5782-b065-4540-a6dd-5896d3816787",
+      "name": "Telegram Send Message",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2160,
+        1488
+      ],
+      "id": "aff98727-f9a6-4764-8457-9edea5bc6f97",
+      "name": "Telegram Send Email Success",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1120,
+        1136
+      ],
+      "id": "70a65319-8ea8-447c-b69a-b8009169cc01",
+      "name": "Telegram Send Message Error",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1408,
+        1808
+      ],
+      "id": "373c764c-1fa2-4e45-891c-20c93050c937",
+      "name": "Telegram Send False Email",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1520,
+        2128
+      ],
+      "id": "34550077-d09f-41ba-8e7d-a31489351552",
+      "name": "Telegram Send Message Response",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
+      "credentials": {
+        "telegramApi": {
+          "id": "F2UToIJRQiorbiK3",
+          "name": "Telegram Bot Nexus Finance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message_text }}",
+        "replyMarkup": "replyKeyboard",
+        "replyKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/help",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "/hapus",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "/resetsheet",
+                    "additionalFields": {}
+                  },
+                  {
+                    "text": "📊 Laporan Bulan Ini",
+                    "additionalFields": {}
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "replyKeyboardOptions": {
+          "resize_keyboard": true,
+          "one_time_keyboard": false
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        800,
+        2464
+      ],
+      "id": "8d74b817-a176-4d6c-9bf3-965e5b848c11",
+      "name": "Telegram untuk pesan blokir",
+      "webhookId": "995e73c5-eff9-4947-9456-e10783f18e2e",
       "credentials": {
         "telegramApi": {
           "id": "F2UToIJRQiorbiK3",
@@ -2073,7 +3022,7 @@
       "main": [
         [
           {
-            "node": "If /resetsheet",
+            "node": "Deteksi /help",
             "type": "main",
             "index": 0
           }
@@ -2240,7 +3189,7 @@
         ],
         [
           {
-            "node": "Sudah Terdaftar?",
+            "node": "Deteksi command /hapus",
             "type": "main",
             "index": 0
           }
@@ -2291,22 +3240,153 @@
         ]
       ]
     },
-    "Kirim Pesan Menunggu": {
+    "Kirim Pesan Menunggu1": {
       "main": [
         [
           {
-            "node": "Call 'Nexus - Provisioning Spreadsheet'1",
+            "node": "Call 'Nexus - Provisioning Spreadsheet'",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Kirim Pesan Menunggu1": {
+    "Deteksi command /hapus": {
       "main": [
         [
           {
-            "node": "Call 'Nexus - Provisioning Spreadsheet'",
+            "node": "Deteksi Mode Hapus",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sudah Terdaftar?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baca sheet Transaksi": {
+      "main": [
+        [
+          {
+            "node": "Cari Transaksi Terakhir",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deteksi Mode Hapus": {
+      "main": [
+        [
+          {
+            "node": "Baca sheet Transaksi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cek mode": {
+      "main": [
+        [
+          {
+            "node": "Node Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Node Code + Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Node Code + Telegram": {
+      "main": [
+        [
+          {
+            "node": "Kirim Pesan Hapus",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Node Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Node Code + Telegram: Konfirmasi sukses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cari Transaksi Terakhir": {
+      "main": [
+        [
+          {
+            "node": "Cek mode",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Node Code + Telegram: Konfirmasi sukses": {
+      "main": [
+        [
+          {
+            "node": "Kirim Pesan Hapus Konfirmasi",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deteksi /help": {
+      "main": [
+        [
+          {
+            "node": "Susun pesan bantuan kontekstual",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If /resetsheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Susun pesan bantuan kontekstual": {
+      "main": [
+        [
+          {
+            "node": "Kirim Pesan Bantuan",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kirim Pesan Menunggu": {
+      "main": [
+        [
+          {
+            "node": "Call 'Nexus - Provisioning Spreadsheet'1",
             "type": "main",
             "index": 0
           }
@@ -2320,7 +3400,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "5ffe6514-9614-481d-8481-8af14bfad02e",
+  "versionId": "8e0639cd-d503-477f-8701-e25b094fbf03",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "f05242d28092f4dc4d00db229b8a1d220a1a73dcfbbedc8afb36ec9b5d7d2e59"
